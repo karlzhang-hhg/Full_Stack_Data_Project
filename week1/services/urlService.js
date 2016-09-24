@@ -1,32 +1,28 @@
-/**
- * Created by Damon on 16/9/20.
- */
 var longToShortHash = {};
 var shortToLongHash = {};
-var getShortUrl = function (longUrl) {
-    if (longUrl.indexOf("http") === -1) {
+
+var getShortUrl = function(longUrl) {
+    if (longUrl.indexOf('http') === -1) {
         longUrl = "http://" + longUrl;
     }
     if (longToShortHash[longUrl] != null) {
         return longToShortHash[longUrl];
     } else {
-        var shortUrl = generateShortUrl();
+        var shortUrl = generaeShortUrl();
         longToShortHash[longUrl] = shortUrl;
         shortToLongHash[shortUrl] = longUrl;
         return shortUrl;
     }
 };
 
-var generateShortUrl = function () {
+var generateShortUrl = function() {
     return Object.keys(longToShortHash).length;
 };
 
 var getLongUrl = function (shortUrl) {
     return shortToLongHash[shortUrl];
-}
-
-module.exports = {
-    getShortUrl : getShortUrl,
-    getLongUrl : getLongUrl
 };
-
+module.exports = {
+  getShortUrl: getShortUrl,
+    getLongUrl: getLongUrl
+};
